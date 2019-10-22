@@ -1,91 +1,70 @@
 package model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class MainClass {
 
-	public static void main(String[] args) {
-		
-		Disciplina disciplina = criarDisciplina("Engenharia de Software II", "MATA63", 68);
-		Universidade universidade = criarUniversidade("Universidade Federal da Bahia", "UFBA");
-		
-		Curso si = criarCurso("Sistemas de Informação");
-		Curso lc = criarCurso("Licenciatura em Computação");
-		Curso cc = criarCurso("Ciência da Computação");
-		
-		CursoDisciplina cursoDisciplinaSI = criarCursoDisciplina(disciplina, "OB", 5);
-		CursoDisciplina cursoDisciplinaCC = criarCursoDisciplina(disciplina, "OB", 6);
-		CursoDisciplina cursoDisciplinaLC = criarCursoDisciplina(disciplina, "OP");
-		
-		lc.getOptativas().add(cursoDisciplinaLC);
-		cc.getObrigatorias().add(cursoDisciplinaCC);
-		si.getObrigatorias().add(cursoDisciplinaSI);
-		
-		universidade.getCursos().add(si);
-		universidade.getCursos().add(lc);
-		universidade.getCursos().add(cc);
-		
-		imprimeInformacoes(universidade);
+	public static void main(String[] args) throws FileNotFoundException {
+		File file = new File("dados.txt");
+		Scanner input = new Scanner(file);
 
-	}
-	
-	private static void imprimeInformacoes(Universidade universidade) {
-		System.out.println(universidade.getNome() +" - "+ universidade.getSigla());
-		for (Curso curso : universidade.getCursos()) {
-			System.out.println("\t"+curso.getNome());
-			for (CursoDisciplina obrigatoria : curso.getObrigatorias()) {
-				System.out.println("\t\tOBRIGATÓRIAS:");
-				imprimeInformacoesDisciplina(obrigatoria);
-			}
-			for (CursoDisciplina optativa : curso.getOptativas()) {
-				System.out.println("\t\tOPTATIVAS:");
-				imprimeInformacoesDisciplina(optativa);
-			}
-		}
-	}
-	
-	private static void imprimeInformacoesDisciplina(CursoDisciplina disciplina) {
-		System.out.println("\t\t\tNOME: "+disciplina.getDisciplina().getNome());
-		System.out.println("\t\t\tCÓDIGO: "+disciplina.getDisciplina().getCodigo());
-		System.out.println("\t\t\tCARGA HORÁRIA: "+disciplina.getDisciplina().getCargaHoraria()+"hrs");
-		System.out.println("\t\t\tNATUREZA: "+disciplina.getNaturezaDisciplina());
-		System.out.println("\t\t\tSEMESTRE SUGERIDO: "+disciplina.getSemestreSugerido());
-	}
-
-	public static Universidade criarUniversidade (String nome, String sigla) {
 		Universidade universidade = new Universidade();
-		universidade.setNome(nome);
-		universidade.setSigla(sigla);
-		return universidade;
-	}
-	
-	public static Disciplina criarDisciplina (String nome, String codigo, int cargaHoraria) {
-		Disciplina disciplina = new Disciplina();
-		disciplina.setNome("Engenharia de Software II");
-		disciplina.setCodigo("MATA63");
-		disciplina.setCargaHoraria(68);
-		return disciplina;
-	}
-	
-	public static Curso criarCurso (String nome) {
-		Curso curso = new Curso();
-		curso.setNome(nome);
-		return curso;
-	}
 
-	public static CursoDisciplina criarCursoDisciplina (Disciplina disciplina, String natureza, int semestre) {
-		CursoDisciplina cursoDisciplina = new CursoDisciplina();
-		cursoDisciplina.setDisciplina(disciplina);
-		cursoDisciplina.setNaturezaDisciplina(natureza);
-		cursoDisciplina.setSemestreSugerido(semestre);
-		return cursoDisciplina;
-		
-	}
-	
-	public static CursoDisciplina criarCursoDisciplina (Disciplina disciplina, String natureza) {
-		CursoDisciplina cursoDisciplina = new CursoDisciplina();
-		cursoDisciplina.setDisciplina(disciplina);
-		cursoDisciplina.setNaturezaDisciplina(natureza);
-		return cursoDisciplina;
-		
-	}
+		int numCursos = input.nextInt();
+		System.out.println("numcursos:"+numCursos);
+		for (int i = 0; i < numCursos; i++) {
+		    // Le nome
+		    input.skip("\n");
+		    String nome = input.nextLine();
+		    System.out.println("nome:"+nome);
+		    String codigo = input.nextLine();
+		    System.out.println("codigo: "+codigo);
+		    int numDisciplinas = input.nextInt();
+		    
+		    Curso curso = new Curso(codigo, nome);
+		    int ant=1;
+		    
+		    for (int j = 0; j < numDisciplinas; j++) {
+		        // ADMF52 1 OB 34 20102
+		        //input.skip("\n");
+		        String nomeDisc = input.nextLine();
+		        String codigoDisc = input.next();
+		        int semestre = input.nextInt();
+		        String natureza = input.next();
+		        int ch = input.nextInt();
+		        String curriculo = input.next();
+		        
+		        Disciplina dis = new Disciplina(codigoDisc, nomeDisc, ch);		        
+		        SemestreSugerido semestreS = new SemestreSugerido();
+		        
+		        if(natureza=="OB"){
+		        	CursoDisciplinaObrigatoria disciplina = new CursoDisciplinaObrigatoria(dis, semestre);
+		        	 if(semestre==ant){
+				        	semestreS.adicionarDisciplina(disciplina);
+				      }else if(semestre!=0){
+				        	ant=semestre;
+				        	curso.adicionarSemestre(semestreS);
+				        	semestreS = new SemestreSugerido();
+				        	semestreS.adicionarDisciplina(disciplina);	
+				      }
+		        	
+		        }else{
+		        	CursoDisciplina disciplina = new CursoDisciplina(dis);
+		        	curso.adicionarOP(disciplina);
+		        }
+  
+		        
+		        universidade.adicionarDisciplina(dis);
 
+		    }
+		    universidade.adicionarCurso(curso);
+		}
+
+		input.close();	
+
+	}
 }
