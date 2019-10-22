@@ -10,6 +10,18 @@ public class CursoDisciplina {
 	
 	public CursoDisciplina() {
 	}
+	
+	public CursoDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+	
+	public CursoDisciplina(Disciplina disciplina, int semestre, String natureza){
+		if(natureza == "OB")
+			CursoDisciplinaObrigatoria cdp = new CursoDisciplinaObrigatoria(disciplina, semestre);
+		else
+			this.disciplina = disciplina;
+	}
+			
 
 	public CursoDisciplina(Disciplina disciplina, List<Disciplina> preRequisitos) {
 		super();
