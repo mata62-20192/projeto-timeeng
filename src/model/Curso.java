@@ -6,9 +6,15 @@ import java.util.List;
 public class Curso {
 	
 	private String nome;
+	private String codigo;
 	private List<SemestreSugerido> semestreSugerido = new ArrayList<>();	
 	private List<CursoDisciplina> optativas = new ArrayList<>();
-
+	
+	public Curso(String nome, String codigo){
+		this.nome = nome;
+		this.codigo = codigo;		
+	}
+	
 	public List<CursoDisciplina> getOptativas() {
 		return optativas;
 	}
