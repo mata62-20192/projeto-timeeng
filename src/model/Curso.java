@@ -32,5 +32,13 @@ public class Curso {
 		Impressoes imp = new Impressoes();
 		imp.imprimirCurriculo(this.semestreSugerido, this.optativas);
 	}
+	
+	public void adicionarOP(CursoDisciplina dis) {
+		optativas.add(dis);
+	}
+	
+	public void adicionarSemestre(SemestreSugerido s) {
+		semestreSugerido.add(s);
+	}
 		
 }
