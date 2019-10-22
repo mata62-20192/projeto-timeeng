@@ -6,19 +6,13 @@ import java.util.List;
 public class Curso {
 	
 	private String nome;
-	private List<CursoDisciplina> obrigatorias = new ArrayList<>();
+	private List<SemestreSugerido> semestreSugerido = new ArrayList<>();	
 	private List<CursoDisciplina> optativas = new ArrayList<>();
-	
-	public List<CursoDisciplina> getObrigatorias() {
-		return obrigatorias;
-	}
-	public void setObrigatorias(List<CursoDisciplina> obrigatorias) {
-		this.obrigatorias = obrigatorias;
-	}
+
 	public List<CursoDisciplina> getOptativas() {
 		return optativas;
 	}
-	public void setOptativas(List<CursoDisciplina> optativas) {
+	private void setOptativas(List<CursoDisciplina> optativas) {
 		this.optativas = optativas;
 	}
 	public String getNome() {
@@ -28,6 +22,9 @@ public class Curso {
 		this.nome = nome;
 	}
 	
-	
-	
+	public void imprimirCurriculo() {
+		Impressoes imp = new Impressoes();
+		imp.imprimirCurriculo(this.semestreSugerido, this.optativas);
+	}
+		
 }

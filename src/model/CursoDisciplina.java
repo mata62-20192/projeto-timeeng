@@ -4,34 +4,25 @@ import java.util.List;
 
 public class CursoDisciplina {
 
-	private String naturezaDisciplina;
 	private Disciplina disciplina;
-	private List<Disciplina> preRequisitos;
-	private int semestreSugerido;
+	private List<Disciplina> preRequisitos;	
 	
 	
-	public int getSemestreSugerido() {
-		return semestreSugerido;
+	public CursoDisciplina() {
 	}
 
-	public void setSemestreSugerido(int semestreSugerido) {
-		this.semestreSugerido = semestreSugerido;
+	public CursoDisciplina(Disciplina disciplina, List<Disciplina> preRequisitos) {
+		super();
+		this.disciplina = disciplina;
+		this.preRequisitos = preRequisitos;
 	}
-
+	
 	public Disciplina getDisciplina() {
 		return disciplina;
 	}
 
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
-	}
-
-	public String getNaturezaDisciplina() {
-		return naturezaDisciplina;
-	}
-
-	public void setNaturezaDisciplina(String naturezaDisciplina) {
-		this.naturezaDisciplina = naturezaDisciplina;
 	}
 
 	public List<Disciplina> getPreRequisitos() {
