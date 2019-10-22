@@ -8,8 +8,8 @@ public class CursoDisciplinaObrigatoria extends CursoDisciplina {
 		super();
 	}
 
-	public CursoDisciplinaObrigatoria(int semestreSugerido) {
-		super();
+	public CursoDisciplinaObrigatoria(Disciplina disciplina, int semestre) {
+		super(disciplina);
 		this.semestreSugerido = semestreSugerido;
 	}
 
