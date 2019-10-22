@@ -24,4 +24,8 @@ public class SemestreSugerido {
 		this.obrigatorias = obrigatorias;
 	}
 	
+	public void adicionarDisciplina(CursoDisciplinaObrigatoria disciplina){
+		obrigatorias.add(disciplina);
+	}
+	
 }
