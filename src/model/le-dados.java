@@ -27,7 +27,7 @@ for (int i = 0; i < numCursos; i++) {
         disciplina = new Disciplina(codigoDisc, nomeDisc, ch);
         universidade.adicionarDisciplina(disciplina);
         
-        DisciplinaCurso disciplinaCurso = new DisciplinaCurso(disciplina, semestre, Natureza.fromString(natureza), new HashSet<Disciplina>()); 
+        DisciplinaCurso disciplinaCurso = new DisciplinaCurso(disciplina, semestre, natureza); 
         curso.addDisciplinaCurso(disciplinaCurso);
     }
 }
