@@ -11,10 +11,15 @@ import br.ufba.mata62.timeeng.domain.Aluno;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ExibirAlunoController extends JFrame {
-	private JLabel lblNome, lblCurso, lblMatricula;
+	private JLabel lblNome, lblCurso, lblMatricula, lblCR;
 	private JPanel contentPane;
+	private JButton btnAddComponentes;
 
 	/**
 	 * Launch the application.
@@ -36,6 +41,17 @@ public class ExibirAlunoController extends JFrame {
 		this();
 		lblNome.setText(aluno.getNome());
 		lblCurso.setText(aluno.getCurso().getNome());
+		lblMatricula.setText(aluno.getNumMatricula());
+		lblCR.setText(aluno.getCR());
+		
+
+		btnAddComponentes = new JButton("AddComponenteCurricular");
+		btnAddComponentes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new ExibirComponentesCursoController(aluno).setVisible(true);
+			}
+		});
+		contentPane.add(btnAddComponentes);
 	}
 	
 	/**
@@ -69,6 +85,14 @@ public class ExibirAlunoController extends JFrame {
 		
 		lblMatricula = new JLabel("XYZ");
 		contentPane.add(lblMatricula);
+		
+		JLabel lblCRDoAluno = new JLabel("CR:");
+		lblCRDoAluno.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		contentPane.add(lblCRDoAluno);
+		
+		lblCR = new JLabel("XYZ");
+		contentPane.add(lblCR);
+		
 	}
 
 }

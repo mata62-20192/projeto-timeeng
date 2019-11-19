@@ -1,11 +1,14 @@
 package br.ufba.mata62.timeeng.domain;
 
+import java.util.ArrayList;
+
 public class Aluno {
 	private String nome;
 	private String numMatricula;
 	private String senha;
 	private Curso curso;
-	
+	private ArrayList<ComponenteCurricularCursado> componentesCursados = new ArrayList<ComponenteCurricularCursado>();
+	private String CR;	
 	
 	public Aluno() {
 	}
@@ -55,6 +58,41 @@ public class Aluno {
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
+	}
+	
+	public ArrayList<ComponenteCurricularCursado> getComponentesCursados() {
+		return componentesCursados;
+	}
+
+	public void setComponentesCursados(ArrayList<ComponenteCurricularCursado> componentesCursados) {
+		this.componentesCursados = componentesCursados;
+	}
+	
+	public void addComponenteCurricular(ComponenteCurricularCursado disciplinaCursada) {
+		componentesCursados.add(disciplinaCursada);
+		this.calcularCR();
+	}
+	
+	public void calcularCR() {
+		if(!componentesCursados.isEmpty()) {
+			int cont=0;
+			double somaNotas=0;
+			for(ComponenteCurricularCursado c : componentesCursados) {
+				cont++;
+				somaNotas+=Double.parseDouble(c.getNota());
+			}
+			this.setCR(somaNotas/((double)cont));
+		}else {
+			this.setCR(0.0);;
+		}
+	}
+
+	public String getCR() {
+		return CR;
+	}
+
+	private void setCR(Double cR) {
+		CR = cR.toString();
 	}
 	
 	
