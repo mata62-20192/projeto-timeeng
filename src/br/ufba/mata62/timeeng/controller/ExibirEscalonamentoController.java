@@ -63,7 +63,7 @@ public class ExibirEscalonamentoController extends JFrame {
         PriorityQueue<Aluno> alunos = escalonarService.Escalonar();
         
         while (!alunos.isEmpty()) {
-        	System.out.println("deu ruim?");
+        	//System.out.println("deu ruim?");
         	Aluno alunoArray = alunos.poll();
         	lblNome = new JLabel("Nome: "+ alunoArray.getNome());
         	panel.add(lblNome);

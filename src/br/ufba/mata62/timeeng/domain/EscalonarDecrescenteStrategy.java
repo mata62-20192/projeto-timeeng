@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+import br.ufba.mata62.timeeng.service.AlunoService;
 import br.ufba.mata62.timeeng.service.UniversidadeService;
 
 public class EscalonarDecrescenteStrategy implements EscalonarStrategy {
@@ -15,10 +16,10 @@ public class EscalonarDecrescenteStrategy implements EscalonarStrategy {
 	
 	@Override
 	public PriorityQueue<Aluno> Escalonar(String curso) {
-		ArrayList<Aluno> alunosGeral = (ArrayList<Aluno>) UniversidadeService.getUniversidade().getAlunos();
+		ArrayList<Aluno> alunosGeral = (ArrayList<Aluno>) AlunoService.getAlunos();
 		PriorityQueue<Aluno> alunosCurso = new PriorityQueue<Aluno>(1,new ComparadorAluno());
 		for(Aluno a : alunosGeral) {
-			System.out.println("rodou");
+			//System.out.println("rodou");
 			if(a.getCurso().getNome().equals(curso)) {
 				alunosCurso.add(a);
 			}
