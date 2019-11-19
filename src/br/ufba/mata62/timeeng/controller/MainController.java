@@ -72,7 +72,7 @@ public class MainController {
 		});
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnExibirCurrculo = new JButton("Exibir Currículo");
+		JButton btnExibirCurrculo = new JButton("Exibir Currï¿½culo");
 		btnExibirCurrculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ExibirCurriculoCursoController().setVisible(true);
@@ -81,6 +81,11 @@ public class MainController {
 		frame.getContentPane().add(btnExibirCurrculo);
 		
 		JButton btnExibirEscalonamento = new JButton("Exibir Escalonamento");
+		btnExibirEscalonamento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new CursoEscalonarController().setVisible(true);
+			}
+		});
 		frame.getContentPane().add(btnExibirEscalonamento);
 	}
 
