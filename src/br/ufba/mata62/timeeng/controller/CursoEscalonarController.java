@@ -1,6 +1,5 @@
 package br.ufba.mata62.timeeng.controller;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

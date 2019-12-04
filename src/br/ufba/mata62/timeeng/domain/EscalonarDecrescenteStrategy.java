@@ -1,12 +1,10 @@
 package br.ufba.mata62.timeeng.domain;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
 import br.ufba.mata62.timeeng.service.AlunoService;
-import br.ufba.mata62.timeeng.service.UniversidadeService;
 
 public class EscalonarDecrescenteStrategy implements EscalonarStrategy {
 

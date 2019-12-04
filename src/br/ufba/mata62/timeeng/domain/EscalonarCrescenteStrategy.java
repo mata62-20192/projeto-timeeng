@@ -17,7 +17,6 @@ public class EscalonarCrescenteStrategy implements EscalonarStrategy{
 		ArrayList<Aluno> alunosGeral = (ArrayList<Aluno>) AlunoService.getAlunos();
 		PriorityQueue<Aluno> alunosCurso = new PriorityQueue<Aluno>(1,new ComparadorAluno2());
 		for(Aluno a : alunosGeral) {
-			System.out.println("rodou");
 			if(a.getCurso().getNome().equals(curso)) {
 				alunosCurso.add(a);
 			}

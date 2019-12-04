@@ -1,6 +1,5 @@
 package br.ufba.mata62.timeeng.controller;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -14,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import br.ufba.mata62.timeeng.domain.Aluno;
-import br.ufba.mata62.timeeng.domain.Curso;
 import br.ufba.mata62.timeeng.domain.EscalonarStrategy;
 import br.ufba.mata62.timeeng.service.EscalonarService;
 

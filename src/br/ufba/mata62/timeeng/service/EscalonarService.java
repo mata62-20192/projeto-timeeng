@@ -1,6 +1,5 @@
 package br.ufba.mata62.timeeng.service;
 
-import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 import br.ufba.mata62.timeeng.domain.Aluno;
@@ -19,7 +18,6 @@ public class EscalonarService {
 	}
 
 	public PriorityQueue<Aluno> Escalonar(){
-		//System.out.println("existe");
 		return estrategia.Escalonar(curso);
 	}
 

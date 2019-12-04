@@ -1,6 +1,5 @@
 package br.ufba.mata62.timeeng.controller;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -18,7 +17,6 @@ import br.ufba.mata62.timeeng.domain.Aluno;
 import br.ufba.mata62.timeeng.domain.Curso;
 import br.ufba.mata62.timeeng.domain.CursoDisciplina;
 import br.ufba.mata62.timeeng.service.CursoService;
-import br.ufba.mata62.timeeng.service.UniversidadeService;
 
 public class ExibirComponentesCursoController extends JFrame {
 
